@@ -77,12 +77,11 @@ might have written for a `Builder`:
 
 ```dart
 test('should resolve a simple dart file', () async {
-  var resolver = await resolveSource(r'''
+  var libExample = await resolveSource(r'''
     library example;
 
     class Foo {}
-  ''');
-  var libExample = resolver.getLibraryByName('example');
+  ''', (resolver) => resolver.findLibraryByName('example'));
   expect(libExample.getType('Foo'), isNotNull);
 });
 ```
